@@ -1,1 +1,2 @@
+bolt/** filter=lfs diff=lfs merge=lfs -text
 bolt/llvm-bolt filter=lfs diff=lfs merge=lfs -text
