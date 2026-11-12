@@ -1,0 +1,102 @@
+SAFE   0x1200877: xor $0x1,%eax
+       0x12008a2: test %eax,%eax
+       0x12008a4: je 12008b0 <_Z6searchP7state_tiiiii+0x8b0>
+       xor 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x1201678: and $0xf,%eax
+       0x120167b: test %eax,%eax
+       0x120167d: je 120168f <_Z6searchP7state_tiiiii+0x168f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x1201784: and $0x3f,%eax
+       0x1201787: test %eax,%eax
+       0x1201789: jne 1201820 <_Z6searchP7state_tiiiii+0x1820>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x12019ab: and $0xf,%eax
+       0x12019ae: test %eax,%eax
+       0x12019b0: jne 12019b9 <_Z6searchP7state_tiiiii+0x19b9>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x1201c1c: and $0xf,%eax
+       0x1201c1f: test %eax,%eax
+       0x1201c21: jne 1201c7d <_Z6searchP7state_tiiiii+0x1c7d>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x1201ca1: and $0xf,%eax
+       0x1201ca4: test %eax,%eax
+       0x1201ca6: jne 1201d02 <_Z6searchP7state_tiiiii+0x1d02>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x1201e76: and $0xf,%eax
+       0x1201e79: test %eax,%eax
+       0x1201e7b: jne 1201e84 <_Z6searchP7state_tiiiii+0x1e84>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x1203df1: and $0xf,%eax
+       0x1203df4: test %eax,%eax
+       0x1203df6: je 120428b <_Z7qsearchP7state_tiiii+0xc4b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x120453d: add %edx,%eax
+       0x120454c: test %eax,%eax
+       0x120454e: jne 1204557 <_Z13retrieve_evalP7state_t+0x57>
+       add 只在 ZF/SF/PF 上与 test 等价，jne 只使用这些位
+
+SAFE   0x120a5e4: xor %eax,%eax
+       0x120a5f8: test %eax,%eax
+       0x120a5fa: je 120a63f <_Z12gen_evasionsP7state_tPii+0x7f>
+       xor 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x120ade1: sar $0x3,%eax
+       0x120ade4: test %eax,%eax
+       0x120ade6: je 120afc8 <_Z12gen_capturesP7state_tPi+0x880>
+       sar 立即数 count=3>0，且 je 只用 ZF/SF/PF
+
+SAFE   0x120ae7e: sar $0x3,%eax
+       0x120ae81: test %eax,%eax
+       0x120ae83: je 120af8b <_Z12gen_capturesP7state_tPi+0x843>
+       sar 立即数 count=3>0，且 je 只用 ZF/SF/PF
+
+SAFE   0x120e0b8: sar $0x3,%eax
+       0x120e0bb: test %eax,%eax
+       0x120e0bd: je 120e9ba <_Z3genP7state_tPi+0xb3a>
+       sar 立即数 count=3>0，且 je 只用 ZF/SF/PF
+
+SAFE   0x120e842: sar $0x3,%eax
+       0x120e845: test %eax,%eax
+       0x120e847: je 120eb84 <_Z3genP7state_tPi+0xd04>
+       sar 立即数 count=3>0，且 je 只用 ZF/SF/PF
+
+SAFE   0x120e8df: sar $0x3,%eax
+       0x120e8e2: test %eax,%eax
+       0x120e8e4: je 120ec95 <_Z3genP7state_tPi+0xe15>
+       sar 立即数 count=3>0，且 je 只用 ZF/SF/PF
+
+SAFE   0x120f913: sar $0x3,%eax
+       0x120f916: test %eax,%eax
+       0x120f918: je 120fdf9 <_Z9gen_quietP7state_tPi+0x721>
+       sar 立即数 count=3>0，且 je 只用 ZF/SF/PF
+
+SAFE   0x1211993: and $0x800000,%eax
+       0x1211998: test %eax,%eax
+       0x121199a: jne 1211b70 <_Z11comp_to_sanP7state_tiPc+0x318>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x12130ee: sar $0x3,%eax
+       0x12130f1: test %eax,%eax
+       0x12130f3: je 1213247 <_Z22SetupPrecalculatedDatav+0x1047>
+       sar 立即数 count=3>0，且 je 只用 ZF/SF/PF
+
+SAFE   0x1214273: sub -0x9c4(%rbp),%eax
+       0x1214285: test %eax,%eax
+       0x1214287: jne 1214807 <_Z11search_rootP7state_tiii+0x76b>
+       sub 只在 ZF/SF/PF 上与 test 等价，jne 只使用这些位
+
+SAFE   0x1214c7d: neg %eax
+       0x1214c8b: test %eax,%eax
+       0x1214c8d: jne 1214a08 <_Z11search_rootP7state_tiii+0x96c>
+       neg 只在 ZF/SF/PF 上与 test 等价，jne 只使用这些位
+
+summary: 20 safe, 0 unsafe
+safe producers: {'xor': 2, 'and': 8, 'add': 1, 'sar': 7, 'sub': 1, 'neg': 1}

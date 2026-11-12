@@ -10,6 +10,85 @@ author: "51295903121-周立成"
 - CPU : `Intel(R) Xeon(R) Gold 6326 CPU @ 2.90GHz`
 - 内存 : 512G
 
+# 复现步骤
+- 必须是x86环境
+- 由于默认的运行是绑定在CPU5上的(`taskset -c 4`)，请确保物理核心数大于等于5不然会报错
+- 可以使用`perf`
+如果是在宿主机运行:
+```bash
+USE_PERF=1 ./run_experiment.sh
+```
+默认是带perf的，在docker内使用perf可能比较麻烦，先构建镜像
+```bash
+docker build -t 51295903121-zhoulicheng-bolt-redundant-flags:0.1.0 .
+```
+验证一下是不是带perf
+```bash
+docker run --rm 51295903121-zhoulicheng-bolt-redundant-flags:0.1.0 bash -c "which perf && perf --version"
+```
+输出:
+```txt
+/usr/local/bin/perf
+perf version 6.8.12
+```
+启动:
+```bash
+docker run --rm --tmpfs /tmp:exec \
+  --cap-add=PERFMON \
+  --security-opt seccomp=unconfined \
+  -e USE_PERF=1 \
+ 51295903121-zhoulicheng-bolt-redundant-flags:0.1.0
+```
+观察结果
+```txt
+--- [1] 原始二进制 ---
+
+ Performance counter stats for '/tmp/bolt_deepsjeng_work/bin/deepsjeng.reloc /workspace/load/531.deepsjeng_r/tests/input.txt' (3 runs):
+
+       86568329484      instructions:u                   #    1.96  insn per cycle              ( +-  0.00% )
+       44171057285      cycles:u                                                                ( +-  0.13% )
+        8004542536      branches:u                                                              ( +-  0.00% )
+         204527760      branch-misses:u                  #    2.56% of all branches             ( +-  0.02% )
+
+           13.7137 +- 0.0101 seconds time elapsed  ( +-  0.07% )
+
+--- [2] 基线 BOLT ---
+
+ Performance counter stats for '/tmp/bolt_deepsjeng_work/bin/deepsjeng.bolt.original.full /workspace/load/531.deepsjeng_r/tests/input.txt' (3 runs):
+
+       86402852592      instructions:u                   #    1.98  insn per cycle              ( +-  0.00% )
+       43662365499      cycles:u                                                                ( +-  0.04% )
+        7941620022      branches:u                                                              ( +-  0.00% )
+         201168145      branch-misses:u                  #    2.53% of all branches             ( +-  0.02% )
+
+          13.57150 +- 0.00522 seconds time elapsed  ( +-  0.04% )
+
+--- [3] 改进 BOLT (--eliminate-redundant-flags) ---
+
+ Performance counter stats for '/tmp/bolt_deepsjeng_work/bin/deepsjeng.bolt.new.full /workspace/load/531.deepsjeng_r/tests/input.txt' (3 runs):
+
+       85845324781      instructions:u                   #    1.97  insn per cycle              ( +-  0.00% )
+       43526343989      cycles:u                                                                ( +-  0.03% )
+        7941620195      branches:u                                                              ( +-  0.00% )
+         200350664      branch-misses:u                  #    2.52% of all branches             ( +-  0.01% )
+
+          13.53237 +- 0.00557 seconds time elapsed  ( +-  0.04% )
+```
+
+我们还有个不带perf用bolt-instrument来插桩测性能的这个，但是因为这个实验结果本身是减少指令数的，这个负载虽然减少了大量的指令数但是大概就快0.6%左右，最后用time测量看不出什么效果，像下面这样,不建议使用
+```txt
+[INFO] 当前容器未授予 PMU 硬件计数器权限，改用 /usr/bin/time 进行绑核耗时对比 (CPU 4):
+原始二进制 : elapsed=13.40s user=13.11s sys=0.28s
+基线 BOLT  : elapsed=13.20s user=12.91s sys=0.28s
+改进 BOLT  : elapsed=13.19s user=12.91s sys=0.28s
+```
+```bash
+docker build -f Dockerfile.bolt-instrument -t  51295903121-zhoulicheng-bolt-redundant-flags-instrument:0.1.0 .
+docker run --rm --tmpfs /tmp:exec 51295903121-zhoulicheng-bolt-redundant-flags-instrument:0.1.0
+```
+
+
+
 # 问题描述
 在x86汇编中，许多算数和逻辑指令，比如(AND,OR,XOR,ADD,SUB等)在计算结果的同时，已经顺带修改了标志寄存器，比如ZF,SF等，但是在编译器(尤其是O0尚未开启优化的时候)，生成的代码里面，常常会在执行完计算指令后，紧接着又跟了一条专门用于检查结果的指令，比如：
 ```asm
@@ -18,8 +97,6 @@ test  %rax, %rax          # 冗余：多做了一次完全相同的标志位检�
 jne   ...                 # 条件跳转实际只需看 ZF
 ```
 这里的`test`是多余的，会占用CPU前端解码的带宽，现有的LLVM自身的`PeepholeOptimizer`虽然在后端CodeGen阶段提供了针对冗余标志位的消除逻辑，但是在实验中，发现仍有大量冗余指令“逃逸”到了最终生成的机器码中，且该优化依赖-O1/-O2/-O3开启完整的CodeGen优化流水线，在-O0的情况下被完全跳过。故本次实验加入了`--eliminate-redundant-flags`，他是作用于后链接期的，接受最终的ELF机器码，与编译器无关，且不论编译参数是-O0还是其他的高优化级别，只要反汇编后存在该特定模式，均能尝试消除。
-
-# 问题复现
 ## 负载
 这里选用SPEC CPU2017 `531.deepsjeng_r` 作为负载，该负载源自于Deep Sjeng WC2008，是对早期象棋程序Sjeng的重写与升级，包含大量的整数比较(CMP/TEST),条件分支(JCC),位操作等，容易产生冗余的CMP/TEST指令，非常适合本次实验。
 ## 快速检测脚本
