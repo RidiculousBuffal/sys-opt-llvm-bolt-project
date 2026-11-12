@@ -1,0 +1,402 @@
+diff --git a/bolt/include/bolt/Core/MCPlusBuilder.h b/bolt/include/bolt/Core/MCPlusBuilder.h
+index a23863505..6e3f3a071 100644
+--- a/bolt/include/bolt/Core/MCPlusBuilder.h
++++ b/bolt/include/bolt/Core/MCPlusBuilder.h
+@@ -1297,6 +1297,22 @@ public:
+     return 0;
+   }
+ 
++  /// If \p Inst is a TEST/CMP instruction that tests a register against itself
++  /// or against zero, return the tested register.  Otherwise return
++  /// std::nullopt.
++  virtual std::optional<MCPhysReg> getTestedRegister(const MCInst &Inst) const {
++    return std::nullopt;
++  }
++
++  /// Return true if \p Test redundantly recomputes the flags produced by
++  /// \p Producer for the condition code used by \p Branch.  This is a
++  /// target-specific check; the caller is responsible for verifying that
++  /// there is no intervening clobber and that EFLAGS is dead after \p Branch.
++  virtual bool isRedundantFlagTest(const MCInst &Producer, const MCInst &Test,
++                                   const MCInst &Branch) const {
++    return false;
++  }
++
+   /// Return true if \p Inst is a instruction that copies either the frame
+   /// pointer or the stack pointer to another general purpose register or
+   /// writes it to a memory location.
+diff --git a/bolt/include/bolt/Passes/BinaryPasses.h b/bolt/include/bolt/Passes/BinaryPasses.h
+index b5971d315..8cd827a09 100644
+--- a/bolt/include/bolt/Passes/BinaryPasses.h
++++ b/bolt/include/bolt/Passes/BinaryPasses.h
+@@ -368,6 +368,31 @@ public:
+   Error runOnFunctions(BinaryContext &BC) override;
+ };
+ 
++/// Eliminate TEST/CMP instructions that redundantly recompute flags already
++/// produced by a preceding flag-setting instruction.
++///
++/// Example:
++///     addq %r15, %rdx
++///     testq %rdx, %rdx     <- redundant for jns
++///     jns  .Lnext
++///
++/// The pass only runs on X86 and only deletes an instruction after checking:
++///   * the producer writes the same register that is tested;
++///   * no instruction between producer and test writes flags or the register;
++///   * the condition code used by the branch is covered by the producer;
++///   * EFLAGS is dead after the branch.
++class EliminateRedundantFlags : public BinaryFunctionPass {
++public:
++  explicit EliminateRedundantFlags(const cl::opt<bool> &PrintPass)
++      : BinaryFunctionPass(PrintPass) {}
++
++  const char *getName() const override {
++    return "eliminate-redundant-flags";
++  }
++
++  Error runOnFunctions(BinaryContext &BC) override;
++};
++
+ /// An optimization to simplify loads from read-only sections.The pass converts
+ /// load instructions with statically computed target address such as:
+ ///
+diff --git a/bolt/lib/Passes/BinaryPasses.cpp b/bolt/lib/Passes/BinaryPasses.cpp
+index 5c8208f96..fb3c5fa74 100644
+--- a/bolt/lib/Passes/BinaryPasses.cpp
++++ b/bolt/lib/Passes/BinaryPasses.cpp
+@@ -14,6 +14,7 @@
+ #include "bolt/Core/FunctionLayout.h"
+ #include "bolt/Core/ParallelUtilities.h"
+ #include "bolt/Passes/BranchLivenessUtils.h"
++#include "bolt/Passes/DataflowInfoManager.h"
+ #include "bolt/Passes/RegAnalysis.h"
+ #include "bolt/Passes/ReorderAlgorithm.h"
+ #include "bolt/Passes/ReorderFunctions.h"
+@@ -111,6 +112,11 @@ static cl::list<Peepholes::PeepholeOpts> Peepholes(
+                           "enable all peephole optimizations")),
+     cl::cat(BoltOptCategory));
+ 
++cl::opt<bool> EliminateRedundantFlags(
++    "eliminate-redundant-flags",
++    cl::desc("eliminate redundant test/cmp instructions that recompute flags"),
++    cl::init(false), cl::cat(BoltOptCategory));
++
+ static cl::opt<unsigned>
+     PrintFuncStat("print-function-statistics",
+                   cl::desc("print statistics about basic block ordering"),
+@@ -1247,6 +1253,170 @@ Error Peepholes::runOnFunctions(BinaryContext &BC) {
+   return Error::success();
+ }
+ 
++Error EliminateRedundantFlags::runOnFunctions(BinaryContext &BC) {
++  if (!BC.isX86())
++    return Error::success();
++
++  std::atomic<uint64_t> NumStatic{0};
++  std::atomic<uint64_t> NumDynamic{0};
++  std::atomic<uint64_t> NumBytes{0};
++  std::atomic<uint64_t> NumBranches{0};
++  std::atomic<uint64_t> NumTests{0};
++  std::atomic<uint64_t> NumProducers{0};
++  std::atomic<uint64_t> NumEquivalent{0};
++  std::atomic<uint64_t> NumFlagsLive{0};
++
++  // Building a call graph is not necessary for this local optimization.  With
++  // a null call graph, RegAnalysis is conservative about calls; this pass
++  // stops at calls anyway.
++  RegAnalysis RA(BC, &BC.getBinaryFunctions(), nullptr);
++
++  auto Skip = [&](const BinaryFunction &BF) { return !shouldOptimize(BF); };
++
++  auto Work = [&](BinaryFunction &BF,
++                  MCPlusBuilder::AllocatorIdTy AllocId) {
++    BinaryContext &BFBC = BF.getBinaryContext();
++    MCPlusBuilder *MIB = BFBC.MIB.get();
++    const MCPhysReg FlagsReg = MIB->getFlagsReg();
++    const unsigned NumRegs = BFBC.MRI->getNumRegs();
++
++    DataflowInfoManager Info(BF, &RA, nullptr, AllocId);
++    LivenessAnalysis &LA = Info.getLivenessAnalysis();
++
++    for (BinaryBasicBlock &BB : BF) {
++      if (BB.isLandingPad())
++        continue;
++
++      for (auto II = BB.begin(); II != BB.end();) {
++        MCInst &Branch = *II;
++        if (!MIB->isConditionalBranch(Branch)) {
++          ++II;
++          continue;
++        }
++        NumBranches.fetch_add(1, std::memory_order_relaxed);
++
++        // Find the test/cmp immediately before the branch, ignoring
++        // pseudo/CFI instructions.
++        auto TI = II;
++        bool FoundTest = false;
++        while (TI != BB.begin()) {
++          --TI;
++          if (MIB->isPseudo(*TI) || MIB->isCFI(*TI))
++            continue;
++          FoundTest = true;
++          break;
++        }
++        if (!FoundTest) {
++          ++II;
++          continue;
++        }
++
++        MCInst &Test = *TI;
++        std::optional<MCPhysReg> TestedReg = MIB->getTestedRegister(Test);
++        if (!TestedReg) {
++          ++II;
++          continue;
++        }
++        NumTests.fetch_add(1, std::memory_order_relaxed);
++
++        // Do not remove the first real instruction of a block; it may be a
++        // branch target or entry point.
++        if (&Test == BB.getFirstNonPseudoInstr()) {
++          ++II;
++          continue;
++        }
++
++        // Find the producer of the flags.  We stop at the first instruction
++        // that writes EFLAGS or the tested register, or at a control-flow
++        // boundary.
++        MCInst *Producer = nullptr;
++        auto PI = TI;
++        while (PI != BB.begin()) {
++          --PI;
++          MCInst &Prev = *PI;
++          if (MIB->isPseudo(Prev) || MIB->isCFI(Prev))
++            continue;
++
++          BitVector Written(NumRegs, false);
++          MIB->getWrittenRegs(Prev, Written);
++
++          if (Written.test(FlagsReg)) {
++            Producer = &Prev;
++            break;
++          }
++
++          if (Written.anyCommon(MIB->getAliases(*TestedReg, false)))
++            break;
++
++          if (MIB->isBranch(Prev) || MIB->isCall(Prev) ||
++              MIB->isReturn(Prev))
++            break;
++
++          // Non-flag-writing instruction (mov/lea/nop): keep looking.
++        }
++
++        if (!Producer) {
++          ++II;
++          continue;
++        }
++        NumProducers.fetch_add(1, std::memory_order_relaxed);
++
++        if (!MIB->isRedundantFlagTest(*Producer, Test, Branch)) {
++          ++II;
++          continue;
++        }
++        NumEquivalent.fetch_add(1, std::memory_order_relaxed);
++
++        // Conservatively require EFLAGS to be dead after the branch.  This
++        // ensures that TEST's CF=OF=0 writes are not observed by later code.
++        if (LA.getLiveOut(Branch).test(FlagsReg)) {
++          NumFlagsLive.fetch_add(1, std::memory_order_relaxed);
++          ++II;
++          continue;
++        }
++
++        uint64_t Size = 0;
++        if (std::optional<uint32_t> S = MIB->getSize(Test))
++          Size = *S;
++        const uint64_t Count = BB.getKnownExecutionCount();
++
++        if (opts::Verbosity > 0)
++          BFBC.errs() << "DELETED redundant test in " << BF.getPrintName()
++                      << " (count=" << Count << ")\n";
++
++        NumStatic.fetch_add(1, std::memory_order_relaxed);
++        NumDynamic.fetch_add(Count, std::memory_order_relaxed);
++        NumBytes.fetch_add(Size, std::memory_order_relaxed);
++
++        // eraseInstruction() returns an iterator to the next instruction,
++        // which is the branch.  Continue without ++II so the branch is
++        // inspected again (it will simply be skipped).
++        II = BB.eraseInstruction(TI);
++      }
++    }
++  };
++
++  ParallelUtilities::runOnEachFunctionWithUniqueAllocId(
++      BC, ParallelUtilities::SchedulingPolicy::SP_INST_LINEAR, Work, Skip,
++      "eliminate-redundant-flags");
++
++  if (opts::Verbosity > 0)
++    BC.outs() << "BOLT-INFO: eliminate-redundant-flags: branches=" << NumBranches
++              << " tests=" << NumTests << " producers=" << NumProducers
++              << " equivalent=" << NumEquivalent
++              << " flags-live=" << NumFlagsLive << "\n";
++  if (NumStatic) {
++    BC.outs() << "BOLT-INFO: eliminate-redundant-flags: removed "
++              << NumStatic << " static test/cmp instruction(s), "
++              << NumDynamic << " dynamic execution(s)";
++    if (NumBytes)
++      BC.outs() << ", " << NumBytes << " byte(s)";
++    BC.outs() << "\n";
++  }
++
++  return Error::success();
++}
++
+ bool SimplifyRODataLoads::simplifyRODataLoads(BinaryFunction &BF) {
+   BinaryContext &BC = BF.getBinaryContext();
+   MCPlusBuilder *MIB = BC.MIB.get();
+diff --git a/bolt/lib/Rewrite/BinaryPassManager.cpp b/bolt/lib/Rewrite/BinaryPassManager.cpp
+index 3d77ff10e..4bccded96 100644
+--- a/bolt/lib/Rewrite/BinaryPassManager.cpp
++++ b/bolt/lib/Rewrite/BinaryPassManager.cpp
+@@ -55,6 +55,7 @@ namespace opts {
+ extern cl::opt<bool> PrintAll;
+ extern cl::opt<bool> PrintDynoStats;
+ extern cl::opt<bool> DumpDotAll;
++extern cl::opt<bool> EliminateRedundantFlags;
+ extern bool shouldDumpDot(const bolt::BinaryFunction &Function);
+ extern cl::opt<std::string> AsmDump;
+ extern cl::opt<bolt::PLTCall::OptType> PLT;
+@@ -163,6 +164,11 @@ static cl::opt<bool>
+                    cl::desc("print functions after peephole optimization"),
+                    cl::Hidden, cl::cat(BoltOptCategory));
+ 
++static cl::opt<bool> PrintEliminateRedundantFlags(
++    "print-after-eliminate-redundant-flags",
++    cl::desc("print functions after redundant flags elimination"),
++    cl::Hidden, cl::cat(BoltOptCategory));
++
+ static cl::opt<bool>
+     PrintPLT("print-plt", cl::desc("print functions after PLT optimization"),
+              cl::Hidden, cl::cat(BoltOptCategory));
+@@ -427,6 +433,11 @@ Error BinaryFunctionPassManager::runAllPasses(BinaryContext &BC) {
+     Manager.registerPass(std::make_unique<StripRepRet>(NeverPrint),
+                          opts::StripRepRet);
+ 
++  Manager.registerPass(
++      std::make_unique<EliminateRedundantFlags>(
++          PrintEliminateRedundantFlags),
++      opts::EliminateRedundantFlags);
++
+   Manager.registerPass(std::make_unique<IdenticalCodeFolding>(PrintICF),
+                        opts::ICF != IdenticalCodeFolding::ICFLevel::None);
+ 
+diff --git a/bolt/lib/Target/X86/X86MCPlusBuilder.cpp b/bolt/lib/Target/X86/X86MCPlusBuilder.cpp
+index f2a52e188..86fe39901 100644
+--- a/bolt/lib/Target/X86/X86MCPlusBuilder.cpp
++++ b/bolt/lib/Target/X86/X86MCPlusBuilder.cpp
+@@ -66,6 +66,21 @@ bool isADDri(const MCInst &Inst) {
+          Inst.getOpcode() == X86::ADD64ri8;
+ }
+ 
++/// Return true if the condition code only depends on ZF, SF, or PF.
++bool isZSPCond(unsigned CC) {
++  switch (CC) {
++  case X86::COND_E:
++  case X86::COND_NE:
++  case X86::COND_S:
++  case X86::COND_NS:
++  case X86::COND_P:
++  case X86::COND_NP:
++    return true;
++  default:
++    return false;
++  }
++}
++
+ // Create instruction to increment contents of target by 1
+ static InstructionListType createIncMemory(const MCSymbol *Target,
+                                            MCContext *Ctx) {
+@@ -1239,6 +1254,81 @@ public:
+   MCPhysReg getFramePointer() const override { return X86::RBP; }
+   MCPhysReg getFlagsReg() const override { return X86::EFLAGS; }
+ 
++  std::optional<MCPhysReg>
++  getTestedRegister(const MCInst &Inst) const override {
++    switch (Inst.getOpcode()) {
++    case X86::TEST8rr:
++    case X86::TEST16rr:
++    case X86::TEST32rr:
++    case X86::TEST64rr: {
++      if (MCPlus::getNumPrimeOperands(Inst) != 2)
++        return std::nullopt;
++      const MCOperand &Op0 = Inst.getOperand(0);
++      const MCOperand &Op1 = Inst.getOperand(1);
++      if (!Op0.isReg() || !Op1.isReg() || Op0.getReg() != Op1.getReg())
++        return std::nullopt;
++      return Op0.getReg();
++    }
++    case X86::CMP8ri:
++    case X86::CMP16ri:
++    case X86::CMP16ri8:
++    case X86::CMP32ri:
++    case X86::CMP32ri8:
++    case X86::CMP64ri8:
++    case X86::CMP64ri32: {
++      if (MCPlus::getNumPrimeOperands(Inst) != 2)
++        return std::nullopt;
++      const MCOperand &RegOp = Inst.getOperand(0);
++      const MCOperand &ImmOp = Inst.getOperand(1);
++      if (!RegOp.isReg() || !ImmOp.isImm() || ImmOp.getImm() != 0)
++        return std::nullopt;
++      return RegOp.getReg();
++    }
++    default:
++      return std::nullopt;
++    }
++  }
++
++  bool isRedundantFlagTest(const MCInst &Producer, const MCInst &Test,
++                           const MCInst &Branch) const override {
++    auto TestedReg = getTestedRegister(Test);
++    if (!TestedReg)
++      return false;
++
++    const unsigned CC = getCondCode(Branch);
++    if (CC == X86::COND_INVALID)
++      return false;
++
++    const unsigned Opcode = Producer.getOpcode();
++
++    // A preceding TEST/CMP can also make the following TEST/CMP redundant.
++    if (X86::isTEST(Opcode) || X86::isCMP(Opcode)) {
++      auto ProducerTestedReg = getTestedRegister(Producer);
++      return ProducerTestedReg && *ProducerTestedReg == *TestedReg;
++    }
++
++    const MCInstrDesc &Desc = Info->get(Opcode);
++    if (Desc.getNumDefs() != 1 || Producer.getNumOperands() == 0)
++      return false;
++
++    const MCOperand &DestOp = Producer.getOperand(0);
++    if (!DestOp.isReg() || DestOp.getReg() != *TestedReg)
++      return false;
++
++    // AND/OR/XOR set CF=OF=0 and derive ZF/SF/PF from the result, exactly like
++    // TEST r,r.  They are equivalent for every Jcc condition.
++    if (X86::isAND(Opcode) || X86::isOR(Opcode) || X86::isXOR(Opcode))
++      return true;
++
++    // ADD/SUB/INC/DEC/NEG are only equivalent to TEST r,r for ZF/SF/PF.
++    // Their CF/OF do not match TEST's CF=OF=0.
++    if (X86::isADD(Opcode) || X86::isSUB(Opcode) || X86::isINC(Opcode) ||
++        X86::isDEC(Opcode) || X86::isNEG(Opcode))
++      return isZSPCond(CC);
++
++    return false;
++  }
++
+   bool escapesVariable(const MCInst &Inst,
+                        bool HasFramePointer) const override {
+     int MemOpNo = getMemoryOperandNo(Inst);

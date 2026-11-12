@@ -1,0 +1,475 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 14K of event 'cycles:P'
+# Event count (approx.): 46420843292
+#
+# Overhead  Command          Shared Object      Symbol                                                                           
+# ........  ...............  .................  .................................................................................
+#
+     9.04%  deepsjeng.reloc  deepsjeng.reloc    [.] remove_one_fast(int*, int*, int*, int)
+            |          
+             --8.96%--remove_one_fast(int*, int*, int*, int)
+                       |          
+                       |--4.61%--qsearch(state_t*, int, int, int, int)
+                       |          |          
+                       |          |--2.51%--search(state_t*, int, int, int, int, int)
+                       |          |          search(state_t*, int, int, int, int, int)
+                       |          |          search(state_t*, int, int, int, int, int)
+                       |          |          search(state_t*, int, int, int, int, int)
+                       |          |          search(state_t*, int, int, int, int, int)
+                       |          |          |          
+                       |          |           --2.50%--search(state_t*, int, int, int, int, int)
+                       |          |                     |          
+                       |          |                      --2.45%--search(state_t*, int, int, int, int, int)
+                       |          |                                |          
+                       |          |                                 --2.39%--search(state_t*, int, int, int, int, int)
+                       |          |                                           |          
+                       |          |                                            --2.24%--search(state_t*, int, int, int, int, int)
+                       |          |                                                      |          
+                       |          |                                                       --2.03%--search(state_t*, int, int, int, int, int)
+                       |          |                                                                 |          
+                       |          |                                                                  --1.80%--search(state_t*, int, int, int, int, int)
+                       |          |                                                                            |          
+                       |          |                                                                             --1.37%--search(state_t*, int, int, int, int, int)
+                       |          |                                                                                       |          
+                       |          |                                                                                        --1.08%--search(state_t*, int, int, int, int, int)
+                       |          |          
+                       |           --2.10%--qsearch(state_t*, int, int, int, int)
+                       |                     |          
+                       |                      --1.10%--search(state_t*, int, int, int, int, int)
+                       |                                search(state_t*, int, int, int, int, int)
+                       |                                search(state_t*, int, int, int, int, int)
+                       |                                search(state_t*, int, int, int, int, int)
+                       |                                search(state_t*, int, int, int, int, int)
+                       |                                |          
+                       |                                 --1.08%--search(state_t*, int, int, int, int, int)
+                       |                                           |          
+                       |                                            --1.03%--search(state_t*, int, int, int, int, int)
+                       |          
+                        --4.36%--search(state_t*, int, int, int, int, int)
+                                  |          
+                                   --4.35%--search(state_t*, int, int, int, int, int)
+                                             |          
+                                              --4.33%--search(state_t*, int, int, int, int, int)
+                                                        search(state_t*, int, int, int, int, int)
+                                                        |          
+                                                         --4.27%--search(state_t*, int, int, int, int, int)
+                                                                   |          
+                                                                    --4.17%--search(state_t*, int, int, int, int, int)
+                                                                              |          
+                                                                               --3.95%--search(state_t*, int, int, int, int, int)
+                                                                                         |          
+                                                                                          --3.69%--search(state_t*, int, int, int, int, int)
+                                                                                                    |          
+                                                                                                     --3.32%--search(state_t*, int, int, int, int, int)
+                                                                                                               |          
+                                                                                                                --2.81%--search(state_t*, int, int, int, int, int)
+                                                                                                                          |          
+                                                                                                                           --2.33%--search(state_t*, int, int, int, int, int)
+                                                                                                                                     |          
+                                                                                                                                      --1.78%--search(state_t*, int, int, int, int, int)
+                                                                                                                                                |          
+                                                                                                                                                 --1.34%--search(state_t*, int, int, int, int, int)
+
+     8.46%  deepsjeng.reloc  deepsjeng.reloc    [.] ProbeTT(state_t*, int*, int, int, unsigned int*, int*, int*, int*, int*, int)
+            |          
+             --8.09%--ProbeTT(state_t*, int*, int, int, unsigned int*, int*, int*, int*, int*, int)
+                       |          
+                       |--5.10%--qsearch(state_t*, int, int, int, int)
+                       |          |          
+                       |          |--3.67%--qsearch(state_t*, int, int, int, int)
+                       |          |          |          
+                       |          |          |--2.23%--qsearch(state_t*, int, int, int, int)
+                       |          |          |          |          
+                       |          |          |          |--1.21%--qsearch(state_t*, int, int, int, int)
+                       |          |          |          |          
+                       |          |          |           --1.03%--search(state_t*, int, int, int, int, int)
+                       |          |          |                     search(state_t*, int, int, int, int, int)
+                       |          |          |                     search(state_t*, int, int, int, int, int)
+                       |          |          |                     search(state_t*, int, int, int, int, int)
+                       |          |          |          
+                       |          |           --1.44%--search(state_t*, int, int, int, int, int)
+                       |          |                     search(state_t*, int, int, int, int, int)
+                       |          |                     search(state_t*, int, int, int, int, int)
+                       |          |                     search(state_t*, int, int, int, int, int)
+                       |          |                     |          
+                       |          |                      --1.40%--search(state_t*, int, int, int, int, int)
+                       |          |                                |          
+                       |          |                                 --1.38%--search(state_t*, int, int, int, int, int)
+                       |          |                                           |          
+                       |          |                                            --1.31%--search(state_t*, int, int, int, int, int)
+                       |          |                                                      |          
+                       |          |                                                       --1.23%--search(state_t*, int, int, int, int, int)
+                       |          |                                                                 |          
+                       |          |                                                                  --1.07%--search(state_t*, int, int, int, int, int)
+                       |          |          
+                       |           --1.43%--search(state_t*, int, int, int, int, int)
+                       |                     search(state_t*, int, int, int, int, int)
+                       |                     search(state_t*, int, int, int, int, int)
+                       |                     search(state_t*, int, int, int, int, int)
+                       |                     search(state_t*, int, int, int, int, int)
+                       |                     |          
+                       |                      --1.41%--search(state_t*, int, int, int, int, int)
+                       |                                |          
+                       |                                 --1.36%--search(state_t*, int, int, int, int, int)
+                       |                                           |          
+                       |                                            --1.26%--search(state_t*, int, int, int, int, int)
+                       |                                                      |          
+                       |                                                       --1.17%--search(state_t*, int, int, int, int, int)
+                       |                                                                 |          
+                       |                                                                  --1.06%--search(state_t*, int, int, int, int, int)
+                       |          
+                        --2.98%--search(state_t*, int, int, int, int, int)
+                                  search(state_t*, int, int, int, int, int)
+                                  |          
+                                   --2.97%--search(state_t*, int, int, int, int, int)
+                                             search(state_t*, int, int, int, int, int)
+                                             |          
+                                              --2.94%--search(state_t*, int, int, int, int, int)
+                                                        |          
+                                                         --2.86%--search(state_t*, int, int, int, int, int)
+                                                                   |          
+                                                                    --2.75%--search(state_t*, int, int, int, int, int)
+                                                                              |          
+                                                                               --2.56%--search(state_t*, int, int, int, int, int)
+                                                                                         |          
+                                                                                          --2.27%--search(state_t*, int, int, int, int, int)
+                                                                                                    |          
+                                                                                                     --1.95%--search(state_t*, int, int, int, int, int)
+                                                                                                               |          
+                                                                                                                --1.66%--search(state_t*, int, int, int, int, int)
+                                                                                                                          |          
+                                                                                                                           --1.32%--search(state_t*, int, int, int, int, int)
+                                                                                                                                     |          
+                                                                                                                                      --1.04%--search(state_t*, int, int, int, int, int)
+
+     4.20%  deepsjeng.reloc  deepsjeng.reloc    [.] FindFirstRemove(unsigned long long*)
+            |          
+             --3.84%--FindFirstRemove(unsigned long long*)
+                       |          
+                        --1.30%--mobility_eval(state_t*, t_eval_comps*, attackinfo_t*)
+                                  feval(state_t*, int, t_eval_comps*)
+                                  eval(state_t*, int, int, int)
+
+     4.16%  deepsjeng.reloc  deepsjeng.reloc    [.] mobility_eval(state_t*, t_eval_comps*, attackinfo_t*)
+            |          
+             --3.53%--mobility_eval(state_t*, t_eval_comps*, attackinfo_t*)
+                       |          
+                        --3.50%--feval(state_t*, int, t_eval_comps*)
+                                  eval(state_t*, int, int, int)
+                                  |          
+                                  |--2.15%--search(state_t*, int, int, int, int, int)
+                                  |          |          
+                                  |           --2.15%--search(state_t*, int, int, int, int, int)
+                                  |                     search(state_t*, int, int, int, int, int)
+                                  |                     |          
+                                  |                      --2.12%--search(state_t*, int, int, int, int, int)
+                                  |                                |          
+                                  |                                 --2.03%--search(state_t*, int, int, int, int, int)
+                                  |                                           |          
+                                  |                                            --1.93%--search(state_t*, int, int, int, int, int)
+                                  |                                                      |          
+                                  |                                                       --1.81%--search(state_t*, int, int, int, int, int)
+                                  |                                                                 |          
+                                  |                                                                  --1.60%--search(state_t*, int, int, int, int, int)
+                                  |                                                                            |          
+                                  |                                                                             --1.39%--search(state_t*, int, int, int, int, int)
+                                  |                                                                                       |          
+                                  |                                                                                        --1.20%--search(state_t*, int, int, int, int, int)
+                                  |          
+                                   --1.34%--qsearch(state_t*, int, int, int, int)
+
+     4.10%  deepsjeng.reloc  deepsjeng.reloc    [.] make(state_t*, int)
+            |          
+             --4.05%--make(state_t*, int)
+                       |          
+                       |--2.23%--search(state_t*, int, int, int, int, int)
+                       |          search(state_t*, int, int, int, int, int)
+                       |          search(state_t*, int, int, int, int, int)
+                       |          |          
+                       |           --2.22%--search(state_t*, int, int, int, int, int)
+                       |                     |          
+                       |                      --2.18%--search(state_t*, int, int, int, int, int)
+                       |                                |          
+                       |                                 --2.11%--search(state_t*, int, int, int, int, int)
+                       |                                           |          
+                       |                                            --1.99%--search(state_t*, int, int, int, int, int)
+                       |                                                      |          
+                       |                                                       --1.85%--search(state_t*, int, int, int, int, int)
+                       |                                                                 |          
+                       |                                                                  --1.67%--search(state_t*, int, int, int, int, int)
+                       |                                                                            |          
+                       |                                                                             --1.46%--search(state_t*, int, int, int, int, int)
+                       |                                                                                       |          
+                       |                                                                                        --1.24%--search(state_t*, int, int, int, int, int)
+                       |          
+                        --1.81%--qsearch(state_t*, int, int, int, int)
+                                  |          
+                                   --1.19%--qsearch(state_t*, int, int, int, int)
+
+     4.04%  deepsjeng.reloc  deepsjeng.reloc    [.] order_moves(state_t*, int*, int*, int, unsigned int)
+            |          
+             --3.82%--order_moves(state_t*, int*, int*, int, unsigned int)
+                       search(state_t*, int, int, int, int, int)
+                       search(state_t*, int, int, int, int, int)
+                       search(state_t*, int, int, int, int, int)
+                       |          
+                        --3.81%--search(state_t*, int, int, int, int, int)
+                                  |          
+                                   --3.74%--search(state_t*, int, int, int, int, int)
+                                             |          
+                                              --3.60%--search(state_t*, int, int, int, int, int)
+                                                        |          
+                                                         --3.46%--search(state_t*, int, int, int, int, int)
+                                                                   |          
+                                                                    --3.22%--search(state_t*, int, int, int, int, int)
+                                                                              |          
+                                                                               --2.89%--search(state_t*, int, int, int, int, int)
+                                                                                         |          
+                                                                                          --2.52%--search(state_t*, int, int, int, int, int)
+                                                                                                    |          
+                                                                                                     --2.17%--search(state_t*, int, int, int, int, int)
+                                                                                                               |          
+                                                                                                                --1.79%--search(state_t*, int, int, int, int, int)
+                                                                                                                          |          
+                                                                                                                           --1.34%--search(state_t*, int, int, int, int, int)
+                                                                                                                                     |          
+                                                                                                                                      --1.04%--search(state_t*, int, int, int, int, int)
+
+     3.91%  deepsjeng.reloc  deepsjeng.reloc    [.] ThickPopCount(unsigned long long)
+            |          
+             --3.78%--ThickPopCount(unsigned long long)
+                       |          
+                        --2.69%--mobility_eval(state_t*, t_eval_comps*, attackinfo_t*)
+                                  feval(state_t*, int, t_eval_comps*)
+                                  eval(state_t*, int, int, int)
+                                  |          
+                                  |--1.68%--search(state_t*, int, int, int, int, int)
+                                  |          search(state_t*, int, int, int, int, int)
+                                  |          |          
+                                  |           --1.66%--search(state_t*, int, int, int, int, int)
+                                  |                     search(state_t*, int, int, int, int, int)
+                                  |                     |          
+                                  |                      --1.56%--search(state_t*, int, int, int, int, int)
+                                  |                                |          
+                                  |                                 --1.50%--search(state_t*, int, int, int, int, int)
+                                  |                                           |          
+                                  |                                            --1.38%--search(state_t*, int, int, int, int, int)
+                                  |                                                      |          
+                                  |                                                       --1.23%--search(state_t*, int, int, int, int, int)
+                                  |                                                                 |          
+                                  |                                                                  --1.08%--search(state_t*, int, int, int, int, int)
+                                  |          
+                                   --1.01%--qsearch(state_t*, int, int, int, int)
+
+     3.53%  deepsjeng.reloc  deepsjeng.reloc    [.] search(state_t*, int, int, int, int, int)
+            |          
+             --3.22%--search(state_t*, int, int, int, int, int)
+                       search(state_t*, int, int, int, int, int)
+                       |          
+                        --3.22%--search(state_t*, int, int, int, int, int)
+                                  |          
+                                   --3.19%--search(state_t*, int, int, int, int, int)
+                                             |          
+                                              --3.10%--search(state_t*, int, int, int, int, int)
+                                                        |          
+                                                         --3.00%--search(state_t*, int, int, int, int, int)
+                                                                   |          
+                                                                    --2.81%--search(state_t*, int, int, int, int, int)
+                                                                              |          
+                                                                               --2.53%--search(state_t*, int, int, int, int, int)
+                                                                                         |          
+                                                                                          --2.21%--search(state_t*, int, int, int, int, int)
+                                                                                                    |          
+                                                                                                     --1.91%--search(state_t*, int, int, int, int, int)
+                                                                                                               |          
+                                                                                                                --1.69%--search(state_t*, int, int, int, int, int)
+                                                                                                                          |          
+                                                                                                                           --1.30%--search(state_t*, int, int, int, int, int)
+
+     3.19%  deepsjeng.reloc  deepsjeng.reloc    [.] see(state_t*, int, int, int, int)
+            |          
+             --3.08%--see(state_t*, int, int, int, int)
+                       |          
+                        --1.35%--qsearch(state_t*, int, int, int, int)
+
+     2.80%  deepsjeng.reloc  deepsjeng.reloc    [.] PopCount(unsigned long long)
+            |          
+             --2.45%--PopCount(unsigned long long)
+                       |          
+                        --1.54%--mobility_eval(state_t*, t_eval_comps*, attackinfo_t*)
+                                  feval(state_t*, int, t_eval_comps*)
+                                  eval(state_t*, int, int, int)
+
+     2.66%  deepsjeng.reloc  deepsjeng.reloc    [.] StoreTT(state_t*, int, int, int, unsigned int, int, int, int, int)
+            |          
+             --2.45%--StoreTT(state_t*, int, int, int, unsigned int, int, int, int, int)
+                       |          
+                        --1.64%--qsearch(state_t*, int, int, int, int)
+
+     2.60%  deepsjeng.reloc  deepsjeng.reloc    [.] is_attacked(state_t*, int, int)
+            |          
+             --2.50%--is_attacked(state_t*, int, int)
+                       |          
+                       |--1.42%--check_legal(state_t*, int)
+                       |          
+                        --1.04%--in_check(state_t*)
+
+     2.58%  deepsjeng.reloc  deepsjeng.reloc    [.] DiagonalAttacks(unsigned long long, unsigned int)
+            |          
+             --2.51%--DiagonalAttacks(unsigned long long, unsigned int)
+                       |          
+                        --2.16%--BishopAttacks(state_t*, int)
+
+     2.55%  deepsjeng.reloc  deepsjeng.reloc    [.] RankAttacks(unsigned long long, unsigned int)
+            |          
+             --2.43%--RankAttacks(unsigned long long, unsigned int)
+                       |          
+                        --2.29%--RookAttacks(state_t*, int)
+                                  |          
+                                   --1.15%--mobility_eval(state_t*, t_eval_comps*, attackinfo_t*)
+                                             feval(state_t*, int, t_eval_comps*)
+                                             eval(state_t*, int, int, int)
+
+     2.53%  deepsjeng.reloc  deepsjeng.reloc    [.] fast_order_moves(state_t*, int*, int*, int, unsigned int)
+            |          
+             --2.48%--fast_order_moves(state_t*, int*, int*, int, unsigned int)
+                       |          
+                        --2.47%--qsearch(state_t*, int, int, int, int)
+                                  |          
+                                  |--1.32%--search(state_t*, int, int, int, int, int)
+                                  |          search(state_t*, int, int, int, int, int)
+                                  |          search(state_t*, int, int, int, int, int)
+                                  |          search(state_t*, int, int, int, int, int)
+                                  |          search(state_t*, int, int, int, int, int)
+                                  |          |          
+                                  |           --1.30%--search(state_t*, int, int, int, int, int)
+                                  |                     |          
+                                  |                      --1.25%--search(state_t*, int, int, int, int, int)
+                                  |                                |          
+                                  |                                 --1.19%--search(state_t*, int, int, int, int, int)
+                                  |                                           |          
+                                  |                                            --1.10%--search(state_t*, int, int, int, int, int)
+                                  |                                                      |          
+                                  |                                                       --1.00%--search(state_t*, int, int, int, int, int)
+                                  |          
+                                   --1.15%--qsearch(state_t*, int, int, int, int)
+
+     2.49%  deepsjeng.reloc  deepsjeng.reloc    [.] qsearch(state_t*, int, int, int, int)
+            |          
+             --2.27%--qsearch(state_t*, int, int, int, int)
+                       |          
+                       |--1.25%--search(state_t*, int, int, int, int, int)
+                       |          search(state_t*, int, int, int, int, int)
+                       |          search(state_t*, int, int, int, int, int)
+                       |          |          
+                       |           --1.24%--search(state_t*, int, int, int, int, int)
+                       |                     search(state_t*, int, int, int, int, int)
+                       |                     |          
+                       |                      --1.22%--search(state_t*, int, int, int, int, int)
+                       |                                |          
+                       |                                 --1.17%--search(state_t*, int, int, int, int, int)
+                       |                                           |          
+                       |                                            --1.11%--search(state_t*, int, int, int, int, int)
+                       |                                                      |          
+                       |                                                       --1.01%--search(state_t*, int, int, int, int, int)
+                       |          
+                        --1.02%--qsearch(state_t*, int, int, int, int)
+
+     2.45%  deepsjeng.reloc  deepsjeng.reloc    [.] unmake(state_t*, int)
+            |          
+             --2.42%--unmake(state_t*, int)
+                       |          
+                       |--1.30%--search(state_t*, int, int, int, int, int)
+                       |          search(state_t*, int, int, int, int, int)
+                       |          |          
+                       |           --1.28%--search(state_t*, int, int, int, int, int)
+                       |                     |          
+                       |                      --1.27%--search(state_t*, int, int, int, int, int)
+                       |                                search(state_t*, int, int, int, int, int)
+                       |                                |          
+                       |                                 --1.20%--search(state_t*, int, int, int, int, int)
+                       |                                           |          
+                       |                                            --1.16%--search(state_t*, int, int, int, int, int)
+                       |                                                      |          
+                       |                                                       --1.07%--search(state_t*, int, int, int, int, int)
+                       |          
+                        --1.13%--qsearch(state_t*, int, int, int, int)
+
+     2.30%  deepsjeng.reloc  deepsjeng.reloc    [.] FileAttacks(unsigned long long, unsigned int)
+            |          
+             --2.10%--FileAttacks(unsigned long long, unsigned int)
+                       |          
+                        --1.37%--RookAttacks(state_t*, int)
+
+     2.15%  deepsjeng.reloc  deepsjeng.reloc    [.] eval(state_t*, int, int, int)
+            |          
+             --2.01%--eval(state_t*, int, int, int)
+                       |          
+                        --1.13%--search(state_t*, int, int, int, int, int)
+                                  search(state_t*, int, int, int, int, int)
+                                  |          
+                                   --1.12%--search(state_t*, int, int, int, int, int)
+                                             search(state_t*, int, int, int, int, int)
+                                             |          
+                                              --1.09%--search(state_t*, int, int, int, int, int)
+                                                        |          
+                                                         --1.08%--search(state_t*, int, int, int, int, int)
+                                                                   |          
+                                                                    --1.01%--search(state_t*, int, int, int, int, int)
+
+     1.85%  deepsjeng.reloc  deepsjeng.reloc    [.] kingsafety_eval(state_t*, pawntt_t*, t_eval_comps*)
+            |          
+             --1.71%--kingsafety_eval(state_t*, pawntt_t*, t_eval_comps*)
+                       feval(state_t*, int, t_eval_comps*)
+                       eval(state_t*, int, int, int)
+
+     1.74%  deepsjeng.reloc  deepsjeng.reloc    [.] compact_move(int)
+            |          
+             --1.57%--compact_move(int)
+
+     1.71%  deepsjeng.reloc  deepsjeng.reloc    [.] gen_captures(state_t*, int*)
+            |          
+             --1.46%--gen_captures(state_t*, int*)
+                       |          
+                        --1.16%--qsearch(state_t*, int, int, int, int)
+
+     1.44%  deepsjeng.reloc  deepsjeng.reloc    [.] kingpressure_eval(state_t*, attackinfo_t*, t_eval_comps*)
+            |          
+             --1.36%--kingpressure_eval(state_t*, attackinfo_t*, t_eval_comps*)
+                       feval(state_t*, int, t_eval_comps*)
+                       eval(state_t*, int, int, int)
+
+     1.43%  deepsjeng.reloc  deepsjeng.reloc    [.] attacks_to(state_t*, int)
+            |          
+             --1.35%--attacks_to(state_t*, int)
+                       |          
+                        --1.33%--see(state_t*, int, int, int, int)
+
+     1.39%  deepsjeng.reloc  deepsjeng.reloc    [.] add_capture(int*, int, int, int, int, int)
+            |          
+             --1.22%--add_capture(int*, int, int, int, int, int)
+
+     1.31%  deepsjeng.reloc  deepsjeng.reloc    [.] AntiDiagAttacks(unsigned long long, unsigned int)
+            |          
+             --1.15%--AntiDiagAttacks(unsigned long long, unsigned int)
+
+     1.19%  deepsjeng.reloc  deepsjeng.reloc    [.] gen(state_t*, int*)
+            |          
+             --1.01%--gen(state_t*, int*)
+                       |          
+                        --1.01%--search(state_t*, int, int, int, int, int)
+                                  search(state_t*, int, int, int, int, int)
+                                  search(state_t*, int, int, int, int, int)
+                                  search(state_t*, int, int, int, int, int)
+
+     1.18%  deepsjeng.reloc  deepsjeng.reloc    [.] RookAttacks(state_t*, int)
+     1.03%  deepsjeng.reloc  deepsjeng.reloc    [.] history_pre_cut(state_t*, int, int)
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

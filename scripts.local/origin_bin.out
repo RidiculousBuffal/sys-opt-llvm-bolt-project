@@ -1,0 +1,1102 @@
+SAFE   0x4014b6: and %rcx,%rax
+       0x4014b9: test %rax,%rax
+       0x4014bc: je 4014c8 <_Z11is_attackedP7state_tii+0x72>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4014eb: and %rcx,%rax
+       0x4014ee: test %rax,%rax
+       0x4014f1: je 4014fd <_Z11is_attackedP7state_tii+0xa7>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401520: and %rcx,%rax
+       0x401523: test %rax,%rax
+       0x401526: je 401532 <_Z11is_attackedP7state_tii+0xdc>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401570: and -0x10(%rbp),%rax
+       0x401574: test %rax,%rax
+       0x401577: je 4015a2 <_Z11is_attackedP7state_tii+0x14c>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4015c3: and -0x10(%rbp),%rax
+       0x4015c7: test %rax,%rax
+       0x4015ca: je 4015f5 <_Z11is_attackedP7state_tii+0x19f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40162a: and -0x8(%rbp),%rax
+       0x40162e: test %rax,%rax
+       0x401631: je 40165c <_Z11is_attackedP7state_tii+0x206>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401674: and -0x8(%rbp),%rax
+       0x401678: test %rax,%rax
+       0x40167b: je 4018bb <_Z11is_attackedP7state_tii+0x465>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4016d1: and %rcx,%rax
+       0x4016d4: test %rax,%rax
+       0x4016d7: je 4016e3 <_Z11is_attackedP7state_tii+0x28d>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401706: and %rcx,%rax
+       0x401709: test %rax,%rax
+       0x40170c: je 401718 <_Z11is_attackedP7state_tii+0x2c2>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40173b: and %rcx,%rax
+       0x40173e: test %rax,%rax
+       0x401741: je 40174d <_Z11is_attackedP7state_tii+0x2f7>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40178b: and -0x10(%rbp),%rax
+       0x40178f: test %rax,%rax
+       0x401792: je 4017bd <_Z11is_attackedP7state_tii+0x367>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4017de: and -0x10(%rbp),%rax
+       0x4017e2: test %rax,%rax
+       0x4017e5: je 401810 <_Z11is_attackedP7state_tii+0x3ba>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401845: and -0x8(%rbp),%rax
+       0x401849: test %rax,%rax
+       0x40184c: je 401874 <_Z11is_attackedP7state_tii+0x41e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40188c: and -0x8(%rbp),%rax
+       0x401890: test %rax,%rax
+       0x401893: je 4018bb <_Z11is_attackedP7state_tii+0x465>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401acf: and -0x10(%rbp),%rax
+       0x401ad3: test %rax,%rax
+       0x401ad6: je 401af1 <_Z10attacks_toP7state_ti+0x1b8>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401b09: and -0x10(%rbp),%rax
+       0x401b0d: test %rax,%rax
+       0x401b10: je 401b2b <_Z10attacks_toP7state_ti+0x1f2>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401b43: and -0x8(%rbp),%rax
+       0x401b47: test %rax,%rax
+       0x401b4a: je 401b65 <_Z10attacks_toP7state_ti+0x22c>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401b7d: and -0x8(%rbp),%rax
+       0x401b81: test %rax,%rax
+       0x401b84: je 401b9f <_Z10attacks_toP7state_ti+0x266>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x401bd5: and -0x18(%rbp),%rax
+       0x401bd9: test %rax,%rax
+       0x401bdc: je 401bf4 <_Z13PrintBitboardy+0x4f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x402510: and $0x1,%eax
+       0x402513: test %eax,%eax
+       0x402515: je 40252d <_Z22SetupPrecalculatedDatav+0x687>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4025c3: and $0x7,%eax
+       0x4025c6: test %eax,%eax
+       0x4025c8: jle 402676 <_Z22SetupPrecalculatedDatav+0x7d0>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40273f: sar $0x3,%eax
+       0x402742: test %eax,%eax
+       0x402744: je 40289a <_Z22SetupPrecalculatedDatav+0x9f4>
+       sar 立即数 count=3>0，且 je 只用 ZF/SF/PF
+
+SAFE   0x4028f1: and $0x7,%eax
+       0x4028f4: test %eax,%eax
+       0x4028f6: jle 402946 <_Z22SetupPrecalculatedDatav+0xaa0>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4029a2: and $0x6,%eax
+       0x4029a5: test %eax,%eax
+       0x4029a7: je 4029f7 <_Z22SetupPrecalculatedDatav+0xb51>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x402a71: and $0x7,%eax
+       0x402a74: test %eax,%eax
+       0x402a76: jle 402ac6 <_Z22SetupPrecalculatedDatav+0xc20>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x402b22: and $0x6,%eax
+       0x402b25: test %eax,%eax
+       0x402b27: je 402b77 <_Z22SetupPrecalculatedDatav+0xcd1>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x402c17: and $0x7,%eax
+       0x402c1a: test %eax,%eax
+       0x402c1c: jle 402c6c <_Z22SetupPrecalculatedDatav+0xdc6>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x402d25: and $0x7,%eax
+       0x402d28: test %eax,%eax
+       0x402d2a: jle 402d7a <_Z22SetupPrecalculatedDatav+0xed4>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x402e1c: and $0x7,%eax
+       0x402e1f: test %eax,%eax
+       0x402e21: jle 402e71 <_Z22SetupPrecalculatedDatav+0xfcb>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x402f2b: and $0x1,%eax
+       0x402f2e: test %eax,%eax
+       0x402f30: jne 402f3e <_Z22SetupPrecalculatedDatav+0x1098>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x402f72: and $0x1,%eax
+       0x402f75: test %eax,%eax
+       0x402f77: jne 402f85 <_Z22SetupPrecalculatedDatav+0x10df>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4033e5: and $0x1,%eax
+       0x4033e8: test %eax,%eax
+       0x4033ea: je 403417 <_Z22SetupPrecalculatedDatav+0x1571>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4037f9: and $0x7,%eax
+       0x4037fc: test %eax,%eax
+       0x4037fe: jne 403836 <_Z22SetupPrecalculatedDatav+0x1990>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4038c5: and $0x7,%eax
+       0x4038c8: test %eax,%eax
+       0x4038ca: jne 403902 <_Z22SetupPrecalculatedDatav+0x1a5c>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x404a1f: and %rdx,%rax
+       0x404a22: test %rax,%rax
+       0x404a25: je 404a9e <_Z14drawn_endgamesP7state_tiii+0x40b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x404b71: and %rdx,%rax
+       0x404b74: test %rax,%rax
+       0x404b77: je 404bf0 <_Z14drawn_endgamesP7state_tiii+0x55d>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x404cca: add %edx,%eax
+       0x404ccc: test %eax,%eax
+       0x404cce: jne 404d49 <_Z14drawn_endgamesP7state_tiii+0x6b6>
+       add 只在 ZF/SF/PF 上与 test 等价，jne 只使用这些位
+
+SAFE   0x404d3b: and %rdx,%rax
+       0x404d3e: test %rax,%rax
+       0x404d41: jne 404d95 <_Z14drawn_endgamesP7state_tiii+0x702>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x404dd3: add %edx,%eax
+       0x404dd5: test %eax,%eax
+       0x404dd7: jne 404e52 <_Z14drawn_endgamesP7state_tiii+0x7bf>
+       add 只在 ZF/SF/PF 上与 test 等价，jne 只使用这些位
+
+SAFE   0x404e44: and %rdx,%rax
+       0x404e47: test %rax,%rax
+       0x404e4a: jne 404e9b <_Z14drawn_endgamesP7state_tiii+0x808>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40546b: and %rdx,%rax
+       0x40546e: test %rax,%rax
+       0x405471: je 40589e <_Z14drawn_endgamesP7state_tiii+0x120b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x405489: and %rdx,%rax
+       0x40548c: test %rax,%rax
+       0x40548f: je 40556c <_Z14drawn_endgamesP7state_tiii+0xed9>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4054a7: and %rdx,%rax
+       0x4054aa: test %rax,%rax
+       0x4054ad: jne 40556c <_Z14drawn_endgamesP7state_tiii+0xed9>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4054c5: and %rdx,%rax
+       0x4054c8: test %rax,%rax
+       0x4054cb: jne 405661 <_Z14drawn_endgamesP7state_tiii+0xfce>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40557e: and %rdx,%rax
+       0x405581: test %rax,%rax
+       0x405584: je 40589e <_Z14drawn_endgamesP7state_tiii+0x120b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40559c: and %rdx,%rax
+       0x40559f: test %rax,%rax
+       0x4055a2: jne 40589e <_Z14drawn_endgamesP7state_tiii+0x120b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4055ba: and %rdx,%rax
+       0x4055bd: test %rax,%rax
+       0x4055c0: jne 40589e <_Z14drawn_endgamesP7state_tiii+0x120b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4056b6: and %rdx,%rax
+       0x4056b9: test %rax,%rax
+       0x4056bc: je 4058a2 <_Z14drawn_endgamesP7state_tiii+0x120f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4056d4: and %rdx,%rax
+       0x4056d7: test %rax,%rax
+       0x4056da: je 4057bb <_Z14drawn_endgamesP7state_tiii+0x1128>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4056f2: and %rdx,%rax
+       0x4056f5: test %rax,%rax
+       0x4056f8: jne 4057bb <_Z14drawn_endgamesP7state_tiii+0x1128>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x405710: and %rdx,%rax
+       0x405713: test %rax,%rax
+       0x405716: jne 4058a1 <_Z14drawn_endgamesP7state_tiii+0x120e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4057cd: and %rdx,%rax
+       0x4057d0: test %rax,%rax
+       0x4057d3: je 4058a2 <_Z14drawn_endgamesP7state_tiii+0x120f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4057eb: and %rdx,%rax
+       0x4057ee: test %rax,%rax
+       0x4057f1: jne 4058a2 <_Z14drawn_endgamesP7state_tiii+0x120f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x405809: and %rdx,%rax
+       0x40580c: test %rax,%rax
+       0x40580f: jne 4058a2 <_Z14drawn_endgamesP7state_tiii+0x120f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4058de: and %rdx,%rax
+       0x4058e1: test %rax,%rax
+       0x4058e4: je 405938 <_Z14drawn_endgamesP7state_tiii+0x12a5>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40592a: and %rdx,%rax
+       0x40592d: test %rax,%rax
+       0x405930: je 4059a2 <_Z14drawn_endgamesP7state_tiii+0x130f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40594a: and %rdx,%rax
+       0x40594d: test %rax,%rax
+       0x405950: je 4059a2 <_Z14drawn_endgamesP7state_tiii+0x130f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x405996: and %rdx,%rax
+       0x405999: test %rax,%rax
+       0x40599c: je 4059a2 <_Z14drawn_endgamesP7state_tiii+0x130f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4059e1: and %rdx,%rax
+       0x4059e4: test %rax,%rax
+       0x4059e7: je 405a3b <_Z14drawn_endgamesP7state_tiii+0x13a8>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x405a2d: and %rdx,%rax
+       0x405a30: test %rax,%rax
+       0x405a33: je 405aa5 <_Z14drawn_endgamesP7state_tiii+0x1412>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x405a4d: and %rdx,%rax
+       0x405a50: test %rax,%rax
+       0x405a53: je 405aa5 <_Z14drawn_endgamesP7state_tiii+0x1412>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x405a99: and %rdx,%rax
+       0x405a9c: test %rax,%rax
+       0x405a9f: je 405aa5 <_Z14drawn_endgamesP7state_tiii+0x1412>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x406964: and $0x2,%eax
+       0x406967: test %eax,%eax
+       0x406969: je 406992 <_Z15position_to_fenP7state_tPc+0x1f0>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40699c: and $0x4,%eax
+       0x40699f: test %eax,%eax
+       0x4069a1: je 4069ca <_Z15position_to_fenP7state_tPc+0x228>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4069d4: and $0x8,%eax
+       0x4069d7: test %eax,%eax
+       0x4069d9: je 406a02 <_Z15position_to_fenP7state_tPc+0x260>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x406a0c: and $0x10,%eax
+       0x406a0f: test %eax,%eax
+       0x406a11: je 406a3a <_Z15position_to_fenP7state_tPc+0x298>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x406c2a: and %rcx,%rax
+       0x406c2d: test %rax,%rax
+       0x406c30: je 406c3d <_Z9gen_quietP7state_tPi+0x15f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x406c49: sar $0x3,%eax
+       0x406c4c: test %eax,%eax
+       0x406c4e: jne 406d36 <_Z9gen_quietP7state_tPi+0x258>
+       sar 立即数 count=3>0，且 jne 只用 ZF/SF/PF
+
+SAFE   0x406e24: and %rcx,%rax
+       0x406e27: test %rax,%rax
+       0x406e2a: je 406e37 <_Z9gen_quietP7state_tPi+0x359>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4071fd: and $0x2,%eax
+       0x407200: test %eax,%eax
+       0x407202: je 407242 <_Z9gen_quietP7state_tPi+0x764>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40724c: and $0x4,%eax
+       0x40724f: test %eax,%eax
+       0x407251: je 407291 <_Z9gen_quietP7state_tPi+0x7b3>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4072ad: and $0x8,%eax
+       0x4072b0: test %eax,%eax
+       0x4072b2: je 4072f2 <_Z9gen_quietP7state_tPi+0x814>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4072fc: and $0x10,%eax
+       0x4072ff: test %eax,%eax
+       0x407301: je 407341 <_Z9gen_quietP7state_tPi+0x863>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40752e: and %rcx,%rax
+       0x407531: test %rax,%rax
+       0x407534: je 407541 <_Z3genP7state_tPi+0x15f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40754d: sar $0x3,%eax
+       0x407550: test %eax,%eax
+       0x407552: jne 40763a <_Z3genP7state_tPi+0x258>
+       sar 立即数 count=3>0，且 jne 只用 ZF/SF/PF
+
+SAFE   0x407728: and %rcx,%rax
+       0x40772b: test %rax,%rax
+       0x40772e: je 40773b <_Z3genP7state_tPi+0x359>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40792c: and $0x7,%eax
+       0x40792f: test %eax,%eax
+       0x407931: jle 407acf <_Z3genP7state_tPi+0x6ed>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x407963: and %rcx,%rax
+       0x407966: test %rax,%rax
+       0x407969: je 407acf <_Z3genP7state_tPi+0x6ed>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x407972: sar $0x3,%eax
+       0x407975: test %eax,%eax
+       0x407977: jne 407a5f <_Z3genP7state_tPi+0x67d>
+       sar 立即数 count=3>0，且 jne 只用 ZF/SF/PF
+
+SAFE   0x407b0a: and %rcx,%rax
+       0x407b0d: test %rax,%rax
+       0x407b10: je 407c76 <_Z3genP7state_tPi+0x894>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x407b19: sar $0x3,%eax
+       0x407b1c: test %eax,%eax
+       0x407b1e: jne 407c06 <_Z3genP7state_tPi+0x824>
+       sar 立即数 count=3>0，且 jne 只用 ZF/SF/PF
+
+SAFE   0x407d45: and $0x7,%eax
+       0x407d48: test %eax,%eax
+       0x407d4a: jle 407ee9 <_Z3genP7state_tPi+0xb07>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x407d7c: and %rcx,%rax
+       0x407d7f: test %rax,%rax
+       0x407d82: je 407ee9 <_Z3genP7state_tPi+0xb07>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x407f24: and %rcx,%rax
+       0x407f27: test %rax,%rax
+       0x407f2a: je 408091 <_Z3genP7state_tPi+0xcaf>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x408342: and $0x2,%eax
+       0x408345: test %eax,%eax
+       0x408347: je 408387 <_Z3genP7state_tPi+0xfa5>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x408391: and $0x4,%eax
+       0x408394: test %eax,%eax
+       0x408396: je 4083d6 <_Z3genP7state_tPi+0xff4>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4083f2: and $0x8,%eax
+       0x4083f5: test %eax,%eax
+       0x4083f7: je 408437 <_Z3genP7state_tPi+0x1055>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x408441: and $0x10,%eax
+       0x408444: test %eax,%eax
+       0x408446: je 408486 <_Z3genP7state_tPi+0x10a4>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4086ab: and $0x7,%eax
+       0x4086ae: test %eax,%eax
+       0x4086b0: jle 4087a2 <_Z12gen_capturesP7state_tPi+0x27b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4086e2: and %rcx,%rax
+       0x4086e5: test %rax,%rax
+       0x4086e8: je 4087a2 <_Z12gen_capturesP7state_tPi+0x27b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4086f1: sar $0x3,%eax
+       0x4086f4: test %eax,%eax
+       0x4086f6: jne 408732 <_Z12gen_capturesP7state_tPi+0x20b>
+       sar 立即数 count=3>0，且 jne 只用 ZF/SF/PF
+
+SAFE   0x4087dd: and %rcx,%rax
+       0x4087e0: test %rax,%rax
+       0x4087e3: je 40889d <_Z12gen_capturesP7state_tPi+0x376>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4087ec: sar $0x3,%eax
+       0x4087ef: test %eax,%eax
+       0x4087f1: jne 40882d <_Z12gen_capturesP7state_tPi+0x306>
+       sar 立即数 count=3>0，且 jne 只用 ZF/SF/PF
+
+SAFE   0x4089dc: and $0x7,%eax
+       0x4089df: test %eax,%eax
+       0x4089e1: jle 408ad4 <_Z12gen_capturesP7state_tPi+0x5ad>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x408a13: and %rcx,%rax
+       0x408a16: test %rax,%rax
+       0x408a19: je 408ad4 <_Z12gen_capturesP7state_tPi+0x5ad>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x408b0f: and %rcx,%rax
+       0x408b12: test %rax,%rax
+       0x408b15: je 408bd0 <_Z12gen_capturesP7state_tPi+0x6a9>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4092a5: and -0x18(%rbp),%rax
+       0x4092a9: test %rax,%rax
+       0x4092ac: je 4092e6 <_Z15gen_good_checksP7state_tPi+0x3cb>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4093a8: and -0x18(%rbp),%rax
+       0x4093ac: test %rax,%rax
+       0x4093af: je 4093e9 <_Z15gen_good_checksP7state_tPi+0x4ce>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4095fa: and %rcx,%rax
+       0x4095fd: test %rax,%rax
+       0x409600: je 40960d <_Z16gen_check_blocksP7state_tPii+0x1ec>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x409721: and %rcx,%rax
+       0x409724: test %rax,%rax
+       0x409727: je 409734 <_Z16gen_check_blocksP7state_tPii+0x313>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4099f2: xor %eax,%eax
+       0x409a06: test %eax,%eax
+       0x409a08: je 409a4d <_Z12gen_evasionsP7state_tPii+0x7f>
+       xor 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x409f02: and $0x1,%eax
+       0x409f05: test %eax,%eax
+       0x409f07: jne 409f28 <_Z4makeP7state_ti+0x260>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40a48c: and $0x1,%eax
+       0x40a48f: test %eax,%eax
+       0x40a491: jne 40a4b2 <_Z4makeP7state_ti+0x7ea>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40b1eb: and $0x1,%eax
+       0x40b1ee: test %eax,%eax
+       0x40b1f0: jne 40b211 <_Z6unmakeP7state_ti+0x28e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40b41c: and $0x1,%eax
+       0x40b41f: test %eax,%eax
+       0x40b421: jne 40b442 <_Z6unmakeP7state_ti+0x4bf>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40b46f: and $0x1,%eax
+       0x40b472: test %eax,%eax
+       0x40b474: jne 40b58c <_Z6unmakeP7state_ti+0x609>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c37c: and -0x20(%rbp),%rax
+       0x40c380: test %rax,%rax
+       0x40c383: jne 40c453 <_ZL11passer_evalP7state_tP8pawntt_tiP12t_eval_comps+0x2fd>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c403: and %rdx,%rax
+       0x40c406: test %rax,%rax
+       0x40c409: jne 40c470 <_ZL11passer_evalP7state_tP8pawntt_tiP12t_eval_comps+0x31a>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c4e4: and %rdx,%rax
+       0x40c4e7: test %rax,%rax
+       0x40c4ea: je 40c4f0 <_ZL11passer_evalP7state_tP8pawntt_tiP12t_eval_comps+0x39a>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c6db: and -0x20(%rbp),%rax
+       0x40c6df: test %rax,%rax
+       0x40c6e2: jne 40c7b6 <_ZL11passer_evalP7state_tP8pawntt_tiP12t_eval_comps+0x660>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c764: and %rdx,%rax
+       0x40c767: test %rax,%rax
+       0x40c76a: jne 40c7d5 <_ZL11passer_evalP7state_tP8pawntt_tiP12t_eval_comps+0x67f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c837: and %rdx,%rax
+       0x40c83a: test %rax,%rax
+       0x40c83d: je 40c843 <_ZL11passer_evalP7state_tP8pawntt_tiP12t_eval_comps+0x6ed>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c971: and %rdx,%rax
+       0x40c974: test %rax,%rax
+       0x40c977: jne 40c993 <_ZL15positional_evalP7state_tP8pawntt_tP12t_eval_comps+0x114>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c98b: and %rdx,%rax
+       0x40c98e: test %rax,%rax
+       0x40c991: je 40c9de <_ZL15positional_evalP7state_tP8pawntt_tP12t_eval_comps+0x15f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c9a5: and %rdx,%rax
+       0x40c9a8: test %rax,%rax
+       0x40c9ab: je 40c9de <_ZL15positional_evalP7state_tP8pawntt_tP12t_eval_comps+0x15f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40c9f0: and %rdx,%rax
+       0x40c9f3: test %rax,%rax
+       0x40c9f6: jne 40ca12 <_ZL15positional_evalP7state_tP8pawntt_tP12t_eval_comps+0x193>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ca0a: and %rdx,%rax
+       0x40ca0d: test %rax,%rax
+       0x40ca10: je 40ca5d <_ZL15positional_evalP7state_tP8pawntt_tP12t_eval_comps+0x1de>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ca24: and %rdx,%rax
+       0x40ca27: test %rax,%rax
+       0x40ca2a: je 40ca5d <_ZL15positional_evalP7state_tP8pawntt_tP12t_eval_comps+0x1de>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ca90: and %rdx,%rax
+       0x40ca93: test %rax,%rax
+       0x40ca96: je 40cac7 <_ZL15positional_evalP7state_tP8pawntt_tP12t_eval_comps+0x248>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40cb27: and %rdx,%rax
+       0x40cb2a: test %rax,%rax
+       0x40cb2d: je 40cb5e <_ZL15positional_evalP7state_tP8pawntt_tP12t_eval_comps+0x2df>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40d42f: and %rdx,%rax
+       0x40d432: test %rax,%rax
+       0x40d435: jne 40d50b <_ZL13mobility_evalP7state_tP12t_eval_compsP12attackinfo_t+0x567>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40d495: and %rdx,%rax
+       0x40d498: test %rax,%rax
+       0x40d49b: jne 40d4d3 <_ZL13mobility_evalP7state_tP12t_eval_compsP12attackinfo_t+0x52f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40d641: and %rdx,%rax
+       0x40d644: test %rax,%rax
+       0x40d647: jne 40d71d <_ZL13mobility_evalP7state_tP12t_eval_compsP12attackinfo_t+0x779>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40d6a7: and %rdx,%rax
+       0x40d6aa: test %rax,%rax
+       0x40d6ad: jne 40d6e5 <_ZL13mobility_evalP7state_tP12t_eval_compsP12attackinfo_t+0x741>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40d9fe: and $0x4,%eax
+       0x40da01: test %eax,%eax
+       0x40da03: jne 40da09 <_ZL15kingsafety_evalP7state_tP8pawntt_tP12t_eval_comps+0xa1>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40da13: and $0x2,%eax
+       0x40da16: test %eax,%eax
+       0x40da18: jne 40da1e <_ZL15kingsafety_evalP7state_tP8pawntt_tP12t_eval_comps+0xb6>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40da8a: and $0x7,%eax
+       0x40da8d: test %eax,%eax
+       0x40da8f: jne 40da97 <_ZL15kingsafety_evalP7state_tP8pawntt_tP12t_eval_comps+0x12f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40dcd2: and $0x10,%eax
+       0x40dcd5: test %eax,%eax
+       0x40dcd7: jne 40dcdd <_ZL15kingsafety_evalP7state_tP8pawntt_tP12t_eval_comps+0x375>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40dce7: and $0x8,%eax
+       0x40dcea: test %eax,%eax
+       0x40dcec: jne 40dcf2 <_ZL15kingsafety_evalP7state_tP8pawntt_tP12t_eval_comps+0x38a>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40dd5e: and $0x7,%eax
+       0x40dd61: test %eax,%eax
+       0x40dd63: jne 40dd6b <_ZL15kingsafety_evalP7state_tP8pawntt_tP12t_eval_comps+0x403>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e0cc: and -0x8(%rbp),%rax
+       0x40e0d0: test %rax,%rax
+       0x40e0d3: je 40e0d9 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x160>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e0e1: and -0x8(%rbp),%rax
+       0x40e0e5: test %rax,%rax
+       0x40e0e8: je 40e0ee <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x175>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e0f6: and -0x8(%rbp),%rax
+       0x40e0fa: test %rax,%rax
+       0x40e0fd: je 40e103 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x18a>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e10b: and -0x8(%rbp),%rax
+       0x40e10f: test %rax,%rax
+       0x40e112: je 40e118 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x19f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e120: and -0x8(%rbp),%rax
+       0x40e124: test %rax,%rax
+       0x40e127: je 40e12d <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x1b4>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e18b: and -0x8(%rbp),%rax
+       0x40e18f: test %rax,%rax
+       0x40e192: je 40e198 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x21f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e1a0: and -0x8(%rbp),%rax
+       0x40e1a4: test %rax,%rax
+       0x40e1a7: je 40e1ad <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x234>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e1b5: and -0x8(%rbp),%rax
+       0x40e1b9: test %rax,%rax
+       0x40e1bc: je 40e1c2 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x249>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e1ca: and -0x8(%rbp),%rax
+       0x40e1ce: test %rax,%rax
+       0x40e1d1: je 40e1d7 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x25e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e1df: and -0x8(%rbp),%rax
+       0x40e1e3: test %rax,%rax
+       0x40e1e6: je 40e1ec <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x273>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e296: and -0x8(%rbp),%rax
+       0x40e29a: test %rax,%rax
+       0x40e29d: je 40e2a3 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x32a>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e2ab: and -0x8(%rbp),%rax
+       0x40e2af: test %rax,%rax
+       0x40e2b2: je 40e2b8 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x33f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e2c0: and -0x8(%rbp),%rax
+       0x40e2c4: test %rax,%rax
+       0x40e2c7: je 40e2cd <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x354>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e2d5: and -0x8(%rbp),%rax
+       0x40e2d9: test %rax,%rax
+       0x40e2dc: je 40e2e2 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x369>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e2ea: and -0x8(%rbp),%rax
+       0x40e2ee: test %rax,%rax
+       0x40e2f1: je 40e2f7 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x37e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e34d: and -0x8(%rbp),%rax
+       0x40e351: test %rax,%rax
+       0x40e354: je 40e35a <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x3e1>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e362: and -0x8(%rbp),%rax
+       0x40e366: test %rax,%rax
+       0x40e369: je 40e36f <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x3f6>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e377: and -0x8(%rbp),%rax
+       0x40e37b: test %rax,%rax
+       0x40e37e: je 40e384 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x40b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e38c: and -0x8(%rbp),%rax
+       0x40e390: test %rax,%rax
+       0x40e393: je 40e399 <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x420>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e3a1: and -0x8(%rbp),%rax
+       0x40e3a5: test %rax,%rax
+       0x40e3a8: je 40e3ae <_ZL17kingpressure_evalP7state_tP12attackinfo_tP12t_eval_comps+0x435>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40e996: add %edx,%eax
+       0x40e9a5: test %eax,%eax
+       0x40e9a7: je 40e9ae <_Z13retrieve_evalP7state_t+0x55>
+       add 只在 ZF/SF/PF 上与 test 等价，je 只使用这些位
+
+SAFE   0x40eafd: and -0x18(%rbp),%rax
+       0x40eb01: test %rax,%rax
+       0x40eb04: jne 40eb23 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xaf>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40eb2e: and -0x18(%rbp),%rax
+       0x40eb32: test %rax,%rax
+       0x40eb35: jne 40eb54 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xe0>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40eb6d: and -0x18(%rbp),%rax
+       0x40eb71: test %rax,%rax
+       0x40eb74: jne 40eb93 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x11f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ecab: and %rdx,%rax
+       0x40ecae: test %rax,%rax
+       0x40ecb1: jne 40ecba <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x246>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ecf2: and -0x18(%rbp),%rax
+       0x40ecf6: test %rax,%rax
+       0x40ecf9: je 40ed02 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x28e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ed0d: and -0x38(%rbp),%rax
+       0x40ed11: test %rax,%rax
+       0x40ed14: jne 40ed22 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x2ae>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ed52: and %rcx,%rax
+       0x40ed55: test %rax,%rax
+       0x40ed58: jne 40ef24 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x4b0>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40edf8: and -0x10(%rbp),%rax
+       0x40edfc: test %rax,%rax
+       0x40edff: je 40ee91 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x41d>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ee3d: and %rdx,%rax
+       0x40ee40: test %rax,%rax
+       0x40ee43: je 40ee4c <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x3d8>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ee6d: and %rdx,%rax
+       0x40ee70: test %rax,%rax
+       0x40ee73: jne 40ef24 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x4b0>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40eeaf: and -0x30(%rbp),%rax
+       0x40eeb3: test %rax,%rax
+       0x40eeb6: je 40ef24 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x4b0>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40eef0: and %rdx,%rax
+       0x40eef3: test %rax,%rax
+       0x40eef6: je 40eeff <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x48b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ef15: and %rdx,%rax
+       0x40ef18: test %rax,%rax
+       0x40ef1b: jne 40ef24 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x4b0>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40ef5b: and %rdx,%rax
+       0x40ef5e: test %rax,%rax
+       0x40ef61: jne 40efa3 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x52f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f280: and %rdx,%rax
+       0x40f283: test %rax,%rax
+       0x40f286: jne 40f3c2 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x94e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f321: and %rdx,%rax
+       0x40f324: test %rax,%rax
+       0x40f327: jne 40f3c2 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x94e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f350: and %rcx,%rax
+       0x40f353: test %rax,%rax
+       0x40f356: je 40f38e <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x91a>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f40f: and %rdx,%rax
+       0x40f412: test %rax,%rax
+       0x40f415: jne 40f551 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xadd>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f4b0: and %rdx,%rax
+       0x40f4b3: test %rax,%rax
+       0x40f4b6: jne 40f551 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xadd>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f4df: and %rcx,%rax
+       0x40f4e2: test %rax,%rax
+       0x40f4e5: je 40f51d <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xaa9>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f668: and %rdx,%rax
+       0x40f66b: test %rax,%rax
+       0x40f66e: jne 40f677 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xc03>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f6af: and -0x18(%rbp),%rax
+       0x40f6b3: test %rax,%rax
+       0x40f6b6: je 40f6bf <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xc4b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f6ca: and -0x38(%rbp),%rax
+       0x40f6ce: test %rax,%rax
+       0x40f6d1: jne 40f6df <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xc6b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f70f: and %rcx,%rax
+       0x40f712: test %rax,%rax
+       0x40f715: jne 40f8e1 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xe6d>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f7b5: and -0x10(%rbp),%rax
+       0x40f7b9: test %rax,%rax
+       0x40f7bc: je 40f84e <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xdda>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f7fa: and %rdx,%rax
+       0x40f7fd: test %rax,%rax
+       0x40f800: je 40f809 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xd95>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f82a: and %rdx,%rax
+       0x40f82d: test %rax,%rax
+       0x40f830: jne 40f8e1 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xe6d>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f86c: and -0x30(%rbp),%rax
+       0x40f870: test %rax,%rax
+       0x40f873: je 40f8e1 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xe6d>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f8ad: and %rdx,%rax
+       0x40f8b0: test %rax,%rax
+       0x40f8b3: je 40f8bc <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xe48>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f8d2: and %rdx,%rax
+       0x40f8d5: test %rax,%rax
+       0x40f8d8: jne 40f8e1 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xe6d>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40f918: and %rdx,%rax
+       0x40f91b: test %rax,%rax
+       0x40f91e: jne 40f960 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0xeec>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40fc52: and %rdx,%rax
+       0x40fc55: test %rax,%rax
+       0x40fc58: jne 40fd94 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x1320>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40fcf3: and %rdx,%rax
+       0x40fcf6: test %rax,%rax
+       0x40fcf9: jne 40fd94 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x1320>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40fd22: and %rcx,%rax
+       0x40fd25: test %rax,%rax
+       0x40fd28: je 40fd60 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x12ec>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40fde1: and %rdx,%rax
+       0x40fde4: test %rax,%rax
+       0x40fde7: jne 40ff23 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x14af>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40fe82: and %rdx,%rax
+       0x40fe85: test %rax,%rax
+       0x40fe88: jne 40ff23 <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x14af>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x40feb1: and %rcx,%rax
+       0x40feb4: test %rax,%rax
+       0x40feb7: je 40feef <_ZL14full_pawn_evalP7state_tP8pawntt_t+0x147b>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x410103: and -0x8(%rbp),%rax
+       0x410107: test %rax,%rax
+       0x41010a: je 410129 <_Z8psq_evalP7state_tP12t_eval_comps+0x67>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x410113: and -0x8(%rbp),%rax
+       0x410117: test %rax,%rax
+       0x41011a: je 410129 <_Z8psq_evalP7state_tP12t_eval_comps+0x67>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x410130: and -0x8(%rbp),%rax
+       0x410134: test %rax,%rax
+       0x410137: je 410146 <_Z8psq_evalP7state_tP12t_eval_comps+0x84>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x41014d: and -0x8(%rbp),%rax
+       0x410151: test %rax,%rax
+       0x410154: je 410163 <_Z8psq_evalP7state_tP12t_eval_comps+0xa1>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x410515: and $0xf,%eax
+       0x410518: test %eax,%eax
+       0x41051a: jne 410a99 <_ZL12history_goodP7state_tii+0x5ae>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x410ac6: and $0xf,%eax
+       0x410ac9: test %eax,%eax
+       0x410acb: jne 410d0a <_ZL11history_badP7state_tii+0x26e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x411097: and $0xf,%eax
+       0x41109a: test %eax,%eax
+       0x41109c: je 4110cc <_ZL12make_blunderP7state_tiPii+0x22c>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x411b3e: and %rdx,%rax
+       0x411b41: test %rax,%rax
+       0x411b44: jne 411e46 <_ZL17search_time_checkP7state_t+0x354>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x412797: and $0xf,%eax
+       0x41279a: test %eax,%eax
+       0x41279c: je 412c31 <_Z7qsearchP7state_tiiii+0xc4f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x413585: xor $0x1,%eax
+       0x4135b0: test %eax,%eax
+       0x4135b2: je 4135be <_Z6searchP7state_tiiiii+0x8b2>
+       xor 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x414388: and $0xf,%eax
+       0x41438b: test %eax,%eax
+       0x41438d: je 41439f <_Z6searchP7state_tiiiii+0x1693>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x414494: and $0x3f,%eax
+       0x414497: test %eax,%eax
+       0x414499: jne 414530 <_Z6searchP7state_tiiiii+0x1824>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4146bb: and $0xf,%eax
+       0x4146be: test %eax,%eax
+       0x4146c0: jne 4146c9 <_Z6searchP7state_tiiiii+0x19bd>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x41492c: and $0xf,%eax
+       0x41492f: test %eax,%eax
+       0x414931: jne 41498d <_Z6searchP7state_tiiiii+0x1c81>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4149b1: and $0xf,%eax
+       0x4149b4: test %eax,%eax
+       0x4149b6: jne 414a12 <_Z6searchP7state_tiiiii+0x1d06>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x414b86: and $0xf,%eax
+       0x414b89: test %eax,%eax
+       0x414b8b: jne 414b94 <_Z6searchP7state_tiiiii+0x1e88>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x41555c: sub -0x9c4(%rbp),%eax
+       0x41556e: test %eax,%eax
+       0x415570: jne 41559b <_Z11search_rootP7state_tiii+0x3af>
+       sub 只在 ZF/SF/PF 上与 test 等价，jne 只使用这些位
+
+SAFE   0x41571d: and $0xf,%eax
+       0x415720: test %eax,%eax
+       0x415722: je 41572b <_Z11search_rootP7state_tiii+0x53f>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x41578d: and $0xf,%eax
+       0x415790: test %eax,%eax
+       0x415792: jne 4157b5 <_Z11search_rootP7state_tiii+0x5c9>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4159c4: neg %eax
+       0x4159d2: test %eax,%eax
+       0x4159d4: jne 415a8c <_Z11search_rootP7state_tiii+0x8a0>
+       neg 只在 ZF/SF/PF 上与 test 等价，jne 只使用这些位
+
+SAFE   0x41757a: and -0xa0(%rbp),%rax
+       0x417581: test %rax,%rax
+       0x417584: je 4175ab <_Z3seeP7state_tiiii+0x5e2>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4175c6: and -0x98(%rbp),%rax
+       0x4175cd: test %rax,%rax
+       0x4175d0: je 4175f7 <_Z3seeP7state_tiiii+0x62e>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4188f6: and $0x800000,%eax
+       0x4188fb: test %eax,%eax
+       0x4188fd: jne 418986 <_Z11comp_to_sanP7state_tiPc+0x1f2>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x41890c: and $0xf,%eax
+       0x41890f: test %eax,%eax
+       0x418911: jne 418940 <_Z11comp_to_sanP7state_tiPc+0x1ac>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x41898f: and $0xf,%eax
+       0x418992: test %eax,%eax
+       0x418994: jne 4189cd <_Z11comp_to_sanP7state_tiPc+0x239>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x418a2b: and $0x7,%eax
+       0x418a2e: test %eax,%eax
+       0x418a30: je 418a9a <_Z11comp_to_sanP7state_tiPc+0x306>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x418b06: and $0x3f,%eax
+       0x418b09: test %eax,%eax
+       0x418b0b: jne 418c1b <_Z11comp_to_sanP7state_tiPc+0x487>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x418b79: and $0x3f,%eax
+       0x418b7c: test %eax,%eax
+       0x418b7e: je 418c1b <_Z11comp_to_sanP7state_tiPc+0x487>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x419498: and $0x1,%eax
+       0x41949b: test %eax,%eax
+       0x41949d: je 4195ad <_Z13display_boardP7state_ti+0x200>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x4198e3: and $0x3f,%eax
+       0x4198e6: test %eax,%eax
+       0x4198e8: jne 419933 <_Z20extract_current_pathP7state_t+0xa8>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x419904: and $0x3f,%eax
+       0x419907: test %eax,%eax
+       0x419909: jne 419933 <_Z20extract_current_pathP7state_t+0xa8>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+SAFE   0x41b24e: and $0x1,%eax
+       0x41b251: test %eax,%eax
+       0x41b253: jne 41b28b <_Z18reset_piece_squareP7state_t+0x2f1>
+       and 与 test 在 Jcc 使用的全部标志位上等价
+
+summary: 220 safe, 0 unsafe
+safe producers: {'and': 206, 'sar': 7, 'add': 3, 'xor': 2, 'sub': 1, 'neg': 1}
